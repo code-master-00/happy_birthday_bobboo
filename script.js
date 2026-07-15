@@ -441,6 +441,7 @@ function showScreen(screenId) {
   const currentActive = document.querySelector('.screen-section.active');
   if (currentActive) {
     currentActive.classList.remove('active');
+    currentActive.style.display = 'none';
   }
   
   const targetScreen = document.getElementById(screenId);
@@ -489,62 +490,75 @@ updateCountdown();
    INTERACTION TRIGGERS
    ========================================== */
 
-// Envelope Open trigger
-const envelope = document.getElementById('envelope');
-envelope.addEventListener('click', () => {
-  if (envelope.classList.contains('open')) return;
-  
-  // 1. Break wax seal & trigger chimes
-  envelope.classList.add('open');
-  playMagicalChimes();
-  
-  // Trigger music autoplay safely on user interaction
-  if (!isMusicPlaying) {
-    startMusic();
+document.addEventListener('DOMContentLoaded', () => {
+  // Envelope Open trigger
+  const envelope = document.getElementById('envelope');
+  if (envelope) {
+    envelope.addEventListener('click', () => {
+      if (envelope.classList.contains('open')) return;
+      
+      // 1. Break wax seal & trigger chimes
+      envelope.classList.add('open');
+      playMagicalChimes();
+      
+      // Trigger music autoplay safely on user interaction
+      if (!isMusicPlaying) {
+        startMusic();
+      }
+
+      // 2. Generate a fountain of magical sparkles and hearts
+      const rect = envelope.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      for (let i = 0; i < 50; i++) {
+        particles.push(new Particle(centerX, centerY, 'sparkle'));
+        if (i % 2 === 0) particles.push(new Particle(centerX, centerY, 'heart'));
+      }
+
+      // 3. Transition to the full parchment letter screen
+      setTimeout(() => {
+        showScreen('letter-screen');
+      }, 1600);
+    });
   }
 
-  // 2. Generate a fountain of magical sparkles and hearts
-  const rect = envelope.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-  for (let i = 0; i < 50; i++) {
-    particles.push(new Particle(centerX, centerY, 'sparkle'));
-    if (i % 2 === 0) particles.push(new Particle(centerX, centerY, 'heart'));
+  // Panda Shower button trigger
+  const pandaBtn = document.getElementById('panda-shower-btn');
+  if (pandaBtn) {
+    pandaBtn.addEventListener('click', () => {
+      const x = window.innerWidth / 2;
+      const y = window.innerHeight * 0.7;
+      
+      // Shower pandas and hearts
+      for (let i = 0; i < 15; i++) {
+        particles.push(new Particle(x, y, 'panda'));
+      }
+      for (let i = 0; i < 20; i++) {
+        particles.push(new Particle(x, y, 'heart'));
+      }
+    });
   }
 
-  // 3. Transition to the full parchment letter screen
-  setTimeout(() => {
-    showScreen('letter-screen');
-  }, 1600);
-});
-
-// Panda Shower button trigger
-document.getElementById('panda-shower-btn').addEventListener('click', () => {
-  const x = window.innerWidth / 2;
-  const y = window.innerHeight * 0.7;
-  
-  // Shower pandas and hearts
-  for (let i = 0; i < 15; i++) {
-    particles.push(new Particle(x, y, 'panda'));
+  // Cast Lumos button trigger (shower of gold sparkles)
+  const sparkleBtn = document.getElementById('magic-sparkle-btn');
+  if (sparkleBtn) {
+    sparkleBtn.addEventListener('click', () => {
+      const x = window.innerWidth / 2;
+      const y = window.innerHeight / 2;
+      
+      playMagicalChimes();
+      
+      for (let i = 0; i < 50; i++) {
+        particles.push(new Particle(x, y, 'sparkle'));
+      }
+    });
   }
-  for (let i = 0; i < 20; i++) {
-    particles.push(new Particle(x, y, 'heart'));
-  }
-});
 
-// Cast Lumos button trigger (shower of gold sparkles)
-document.getElementById('magic-sparkle-btn').addEventListener('click', () => {
-  const x = window.innerWidth / 2;
-  const y = window.innerHeight / 2;
-  
-  playMagicalChimes();
-  
-  for (let i = 0; i < 50; i++) {
-    particles.push(new Particle(x, y, 'sparkle'));
+  // Music toggle button
+  const musicBtn = document.getElementById('music-btn');
+  if (musicBtn) {
+    musicBtn.addEventListener('click', () => {
+      toggleMusic();
+    });
   }
-});
-
-// Music toggle button
-document.getElementById('music-btn').addEventListener('click', () => {
-  toggleMusic();
 });
