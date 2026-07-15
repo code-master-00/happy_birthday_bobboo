@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My World! ❤️</title>
+  <!-- Google Fonts for Harry Potter & Romantic aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Canvas for Stars, Lumos particles, and Floating Hearts -->
+  <canvas id="magic-canvas"></canvas>
+
+  <!-- Ambient Sound / Music Box Toggle Widget -->
+  <div class="music-widget" id="music-widget">
+    <button class="music-btn" id="music-btn" aria-label="Toggle Music">
+      <span class="music-icon">🎵</span>
+      <span class="music-text">Play Magic Music</span>
+    </button>
+  </div>
+
+  <!-- MAIN WRAPPER -->
+  <div class="app-container">
+
+    <!-- 1. COUNTDOWN SCREEN (Shown before 16th July 2026) -->
+    <section class="screen-section active" id="countdown-screen">
+      <div class="glass-card countdown-card">
+        <div class="hp-border-frame">
+          <div class="owl-icon">🦉</div>
+          <h1 class="hp-title">Magical Mail Awaiting</h1>
+          <p class="subtitle">A special scroll for Baby Bobbo is arriving in...</p>
+          
+          <div class="timer-container">
+            <div class="time-box">
+              <span class="time-num" id="days">00</span>
+              <span class="time-label">Days</span>
+            </div>
+            <div class="time-box">
+              <span class="time-num" id="hours">00</span>
+              <span class="time-label">Hrs</span>
+            </div>
+            <div class="time-box">
+              <span class="time-num" id="minutes">00</span>
+              <span class="time-label">Mins</span>
+            </div>
+            <div class="time-box">
+              <span class="time-num" id="seconds">00</span>
+              <span class="time-label">Secs</span>
+            </div>
+          </div>
+          
+          <div class="timer-footer">
+            <span class="sparkle-text">Locked under a Lily's Love Charm until July 16, 2026 ✨</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ENVELOPE SCREEN (Shown on/after July 16, 2026) -->
+    <section class="screen-section" id="envelope-screen">
+      <div class="envelope-wrapper">
+        <div class="envelope-hint">Tap the seal to open your magical birthday letter... ✉️✨</div>
+        <div class="envelope" id="envelope">
+          <div class="envelope-front"></div>
+          <div class="envelope-back"></div>
+          <div class="envelope-top-flap" id="envelope-flap"></div>
+          <div class="wax-seal" id="wax-seal">
+            <div class="seal-heart">❤️</div>
+          </div>
+          
+          <!-- The Letter inside the envelope -->
+          <div class="parchment-letter-preview" id="letter-preview">
+            <div class="letter-crest">🦉</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FULL LETTER DISPLAY SCREEN -->
+    <section class="screen-section" id="letter-screen">
+      <div class="letter-scroll-wrapper">
+        <div class="parchment-scroll">
+          <div class="parchment-body">
+            <!-- Hogwarts style crest or cute panda crest -->
+            <div class="crest-container">
+              <div class="hp-crest">
+                <span class="crest-emoji">🐼</span>
+                <span class="crest-sparkles">✨</span>
+              </div>
+            </div>
+
+            <!-- Letter content -->
+            <div class="letter-content">
+              <h2 class="letter-heading">My Dearest Baby Bobbo,</h2>
+              
+              <p class="letter-p text-glow">
+                Happy Birthday to my world ❤️🎉✨
+              </p>
+              
+              <p class="letter-p">
+                It's hard to believe it's already been 2 beautiful years with you. You came into my life so unexpectedly, just like <span class="highlight-bean">Mr. Bean falling from the sky</span> 🌠😂, and from that moment, everything started to change.
+              </p>
+              
+              <p class="letter-p">
+                You became my happiness when I had none 🌈💖. You took away my sorrows 🤍, gave me countless reasons to smile 😊, and became the reason I wake up every morning excited for another day. Because of you, I became a better version of myself 🌹.
+              </p>
+              
+              <p class="letter-p">
+                I know you sometimes think you're not enough for me, but my love, you are more than enough. ❤️ I could never ask for anyone better. You are everything I've ever wanted and so much more. Thank you for loving me, believing in me, and standing by me through everything. 🫂💕
+              </p>
+              
+              <p class="letter-p romantic-emphasis">
+                To my Baby Bobbo 🐼💖, my chubby little cuddle panda 🧸🤍, my safe place, my biggest blessing, and the love of my life... I love you sooo sooo sooo much! 🥹❤️♾️
+              </p>
+              
+              <p class="letter-p">
+                I promise to keep making you smile, holding your hand, annoying you with my love 😜💕, and loving you more with every passing day. No matter where life takes us, you'll always be my favorite person and my forever home. 🏡💞
+              </p>
+              
+              <p class="letter-p text-glow">
+                Happy Birthday, my love! 🎂🎈🎁 May this year bring you all the happiness, peace, success, and love that you truly deserve. And I hope I get to celebrate every birthday by your side. ❤️🥂
+              </p>
+              
+              <p class="letter-p letter-signoff">
+                I love you endlessly, Baby Bobbo. Happy Birthday, my world. 🌍❤️✨
+              </p>
+
+              <div class="always-spark">Always. 🪄✨</div>
+            </div>
+
+            <!-- Interactivity buttons at the bottom of the letter -->
+            <div class="letter-actions">
+              <button class="action-btn" id="panda-shower-btn">Send Panda Hugs 🐼</button>
+              <button class="action-btn" id="magic-sparkle-btn">Cast Lumos ✨</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
